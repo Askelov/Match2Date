@@ -1,0 +1,128 @@
+﻿<Page
+    x:Class="Match2Date.View.RegistracijaKorisnika"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Match2Date"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:Match2Date.ViewModel"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <viewmodel:RegistracijaKorisnikaViewModel x:Key="registracija"/>
+    </Page.Resources>
+
+
+
+        <Grid DataContext="{Binding Source={StaticResource registracija}}" 
+            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
+        
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.33*"></ColumnDefinition>
+            <ColumnDefinition Width="0.33*"></ColumnDefinition>
+            <ColumnDefinition Width="0.33*"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+
+
+
+        <RelativePanel Grid.Row="0" Background="#FF60018D" Height="50"  Grid.ColumnSpan="6" >
+            <TextBlock Text="  Registracija" 
+                       Foreground="White" 
+                       
+                       FontSize="18" 
+                       RelativePanel.AlignVerticalCenterWithPanel="True" 
+                       RelativePanel.AlignLeftWithPanel="True"
+                       Margin="0,0,0,0" 
+                       FontWeight="Bold">
+            </TextBlock>
+        </RelativePanel>
+
+
+        <TextBox Name="firstName" Text="{Binding VIme, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" ></TextBox>
+        <TextBlock  Text="&#x0a;Ime: " Grid.Row="1" Grid.Column="0" TextAlignment="Center"></TextBlock>
+        <TextBox Name="lastName" Text="{Binding VPrezime, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" ></TextBox>
+        <TextBlock  Text="&#x0a;Prezime: " Grid.Row="2" Grid.Column="0" TextAlignment="Center"></TextBlock>
+
+        <TextBox Name="email" Text="{Binding VEmail, Mode=TwoWay}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"  ></TextBox>
+        <TextBlock  Text="&#x0a;E-mail:" Grid.Row="3" Grid.Column="0" TextAlignment="Center"></TextBlock>
+
+        <PasswordBox Name="Password" Password="{Binding VSifra, Mode=TwoWay}" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"  ></PasswordBox>
+        <TextBlock  Text="&#x0a;Šifra: " Grid.Row="4" Grid.Column="0" TextAlignment="Center"></TextBlock>
+
+        <PasswordBox Name="ConfPassword"  Password="{Binding VPotSifra, Mode=TwoWay}" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" ></PasswordBox>
+        <TextBlock  Text="&#x0a;Potvrdi šifru: " Grid.Row="5" Grid.Column="0" TextAlignment="Center"></TextBlock>
+
+        <DatePicker Name="DateOfBirth" Date ="{Binding VDatumRodjenjaOffset, Mode=TwoWay}"  Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" ></DatePicker>
+        <TextBlock  Text="&#x0a;Datum rođenja: " Grid.Row="6" Grid.Column="0" TextAlignment="Center"></TextBlock>
+        <TextBlock  Text="&#x0a;Grad: " Grid.Row="7" Grid.Column="0" TextAlignment="Center"></TextBlock>
+        <ComboBox  ItemsSource="{Binding gradovi}" Name ="comboBox" HorizontalAlignment = "Stretch" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="{Binding indexGrad, Mode=TwoWay}" ></ComboBox>
+        <TextBlock  Text="&#x0a;Spol:" Grid.Row="8" Grid.Column="0" TextAlignment="Center"></TextBlock>
+        <StackPanel Grid.Column="1" Grid.Row="8">
+            <RadioButton IsChecked="True" Command="{Binding Path=Musko}" Name="rb1">Muško</RadioButton>
+            <RadioButton Name="rb2" Command="{Binding Path=Zensko}">Žensko</RadioButton>
+
+        </StackPanel>
+        <TextBlock  Text="&#x0a;Kratak opis:" Grid.Row="9" Grid.Column="0" TextAlignment="Center"></TextBlock>
+
+        <TextBox Name="opis" Text="{Binding VOpis, Mode=TwoWay}"  Grid.Column="1" Grid.Row="9" VerticalAlignment="Center" ></TextBox>
+
+        <TextBox Name="fb" Text="{Binding VFacebook, Mode=TwoWay}" Grid.Column="3"  Grid.ColumnSpan="3" Margin="0,0,20,0" Grid.Row="1" VerticalAlignment="Center"  ></TextBox>
+        <TextBlock  Text="&#x0a;Facebook: "   Grid.Row="1" Grid.Column="2" TextAlignment="Center"></TextBlock>
+
+        <TextBox Name="ig" Text="{Binding VInstagram, Mode=TwoWay}" Grid.Column="3" Margin="0,0,20,0"  Grid.ColumnSpan="3" Grid.Row="2" VerticalAlignment="Center"  ></TextBox>
+        <TextBlock  Text="&#x0a;Instagram: "   Grid.Row="2" Grid.Column="2" TextAlignment="Center"></TextBlock>
+
+        <TextBox Name="tel" Text="{Binding VBrojTelefona, Mode=TwoWay}" Grid.Column="3"  Margin="0,0,20,0"  Grid.ColumnSpan="3" Grid.Row="3" VerticalAlignment="Center"  ></TextBox>
+        <TextBlock  Text="&#x0a;Telefon: "   Grid.Row="3" Grid.Column="2" TextAlignment="Center"></TextBlock>
+
+        <TextBlock  Text="&#x0a;Fotografije: "  Grid.Row="4" Grid.Column="2"  TextAlignment="Center"></TextBlock>
+        <Border 
+            Grid.Row="4" Grid.RowSpan="2" Grid.Column="3" BorderThickness="1"  CornerRadius="1"  BorderBrush="Black" Background="Transparent" >
+            <Image Source="{Binding Slika1, Mode=TwoWay}" Stretch="Fill" Name="slika1"></Image>
+        </Border>
+        <Border 
+            Grid.Row="4" Grid.RowSpan="2"  Grid.Column="4" BorderThickness="1"   CornerRadius="1"  BorderBrush="Black" Background="Transparent" >
+            <Image Source="{Binding Slika2, Mode=TwoWay}" Name="slika2" Stretch="Fill"></Image>
+        </Border>
+        <Border   
+            Grid.Row="4" Grid.RowSpan="2" Grid.Column="5" BorderThickness="1"   CornerRadius="1"  BorderBrush="Black" Background="Transparent"  >
+            <Image Source="{Binding Slika3, Mode=TwoWay}" Stretch="Fill" Name="slika3"></Image>
+        </Border>
+        <Button Command="{Binding Path=DodajSLike}"
+            Grid.Row="6" Grid.Column="4" Background="#FF60018D" Foreground="White" Margin="0,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+            <Viewbox Name="vbox1" MaxHeight="200" MaxWidth="200">
+                <SymbolIcon Symbol="BrowsePhotos"/>
+            </Viewbox>
+        </Button>
+        <Button Command="{Binding Path=Kamera}"
+            Grid.Row="6" Grid.Column="4" Background="#FF60018D" Foreground="White" Margin="0,10,0,10" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+            <Viewbox Name="vbox2" MaxHeight="200" MaxWidth="200">
+            <SymbolIcon Symbol="WebCam"/>
+            </Viewbox>
+        </Button>   
+        <Button Grid.Row="9" Background="#FF60018D" Foreground="White" Margin="20,10,20,10" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Registruj se" Command="{Binding Path=RegistrujSe}"/>
+        <Button Content="Otkaži" Grid.Column="3" Background="#FF60018D" Foreground="White" Margin="20,10,20,10" Click="Button_Click_1"  HorizontalAlignment="Stretch" Grid.Row="9" VerticalAlignment="Stretch"/>
+
+
+
+
+    </Grid>
+</Page>
